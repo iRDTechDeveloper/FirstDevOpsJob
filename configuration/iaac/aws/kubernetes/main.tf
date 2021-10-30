@@ -1,15 +1,15 @@
 # aws -- version 
-# aws eks  --region us-east-1 update-kubeconfig --name aforo255-cluster
+# aws eks  --region us-east-2 update-kubeconfig --name irddevops-cluster
 # Uses default VPC  and Subnet. Create Your Own VPC and Private Subnets for 
-# terraform-backend-state-aforo255
-# AKIAXX4OA7XMEK5BV2GI   terraform-aws-user
-# 5l93ML4r64p93dDJhpaSVbfGqHUrFZcYQYwHiB4x
+# terraform-backend-state-ird
+# AKIA6QBO3E3WKWUZG2KA   terraform-aws-user
+# CyjWYrQjDaNZTcy+yrtFdVBh2/DrLgtr9C7n47Ck
 #arn:aws:iam::532336934360:user/terraform-aws-user
 terraform {
   backend "s3" {
     bucket = "mybucket" # Will be overridden from build
     key    = "path/to/my/key" # Will be overridden from build
-    region = "us-east-1"
+    region = "us-east-2"
   }
 }
 
@@ -29,9 +29,9 @@ provider "kubernetes" {
  // version                = "~> 1.9"
 }
 
-module "aforo255-cluster4" {
+module "irddevops-cluster0" {
   source          = "terraform-aws-modules/eks/aws"
-  cluster_name    = "aforo255-cluster4"
+  cluster_name    = "irddevops-cluster0"
   cluster_version = "1.17"
   subnets         = ["subnet-adfa07f2", "subnet-a3c23d82"]  #CHANGE # Donot choose subnet from us-east-1e
   #subnets = data.aws_subnet_ids.subnets.ids
@@ -48,11 +48,11 @@ worker_groups = [
 }
 
 data "aws_eks_cluster" "cluster" {
-  name = module.aforo255-cluster4.cluster_id
+  name = module.irddevops-cluster0.cluster_id
 }
 
 data "aws_eks_cluster_auth" "cluster" {
-  name = module.aforo255-cluster4.cluster_id
+  name = module.irddevops-cluster0.cluster_id
 }
 
 
@@ -77,7 +77,7 @@ resource "kubernetes_cluster_role_binding" "example" {
 
 # Needed to set the default region
 provider "aws" {
-  region  = "us-east-1"
+  region  = "us-east-2"
 }
 
 resource "aws_iam_role" "test_role_dev" {
