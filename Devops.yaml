@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: service-devops
-        image: antony0618/simple-devops:latest
+        image: ereyes2021/simpple-devops:latest
         ports:
         - containerPort: 8080
 ---
