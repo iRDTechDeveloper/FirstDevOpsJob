@@ -17,3 +17,12 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'aws'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
+    backendServiceAWS: 'Connect-aws-terraform'
+    backendAWSBucketName: 'terraform-backend-state-ird'
+    backendAWSKey: 'kubertenes-dev.tfstate'
