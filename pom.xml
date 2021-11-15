@@ -43,9 +43,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	
-<!--<packaging>${packaging.type}</packaging>	
+
+<packaging>${packaging.type}</packaging>	
 <profiles>
    <profile>
        <id>jar</id>
@@ -68,6 +67,6 @@
             </dependency>
        </dependencies>
    </profile>
-</profiles> -->
+</profiles>
 
 </project>
